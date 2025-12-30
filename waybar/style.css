@@ -1,0 +1,239 @@
+* {
+    border: none;
+    font-family: "JetBrainsMono Nerd Font", "Symbols Nerd Font", sans-serif;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+window#waybar {
+    background-color: transparent;
+    color: #cdd6f4;
+}
+
+/* ================================================================= */
+/* BAGIAN KIRI (WORKSPACE & SPOTIFY) - DIBIKIN TRANSPARAN & PISAH */
+/* ================================================================= */
+
+.modules-left {
+    background: transparent; /* INI KUNCINYA: Wadahnya gak kelihatan */
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* PULAU 1: WORKSPACES */
+#workspaces {
+    background-color: #1e1e2e;  /* Latar Gelap */
+    border: 2px solid #cba6f7;  /* Garis Ungu */
+    border-radius: 15px;        /* Sudut Tumpul */
+    
+    /* Posisi & Ukuran */
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#workspaces button {
+    padding: 0 10px;
+    color: #cdd6f4;
+    border-radius: 10px;
+    transition: all 0.3s;
+}
+
+#workspaces button.active {
+    background-color: #cba6f7; /* Ungu Cerah */
+    color: #1e1e2e;            /* Teks Gelap */
+    min-width: 40px;
+}
+
+#workspaces button:hover {
+    background-color: #313244;
+    color: #cba6f7;
+}
+
+/* PULAU 2: SPOTIFY (GALAXY STYLE) */
+#mpris {
+    background-color: #1e1e2e;
+    color: #cba6f7;
+    font-family: "JetBrainsMono Nerd Font", sans-serif;
+    font-size: 13px;
+    font-weight: bold;
+
+    border-radius: 20px;
+    padding: 5px 20px;
+    
+    /* JARAK PEMISAH (GAP) DARI WORKSPACE */
+    margin-left: 15px;  /* Jarak jauh biar kelihatan misah */
+    margin-top: 5px;
+    margin-bottom: 5px;
+    
+    border: 2px solid #cba6f7; /* Border Ungu */
+    min-width: 150px;
+    
+    transition: all 0.3s ease;
+}
+
+#mpris.paused {
+    color: #a6adc8;
+    border-color: #585b70;
+    background-color: #11111b;
+}
+
+#mpris:hover {
+    background-color: #cba6f7;
+    color: #1e1e2e;
+    box-shadow: 0 0 15px rgba(203, 166, 247, 0.6);
+}
+
+/* ================================================================= */
+/* RAM & CPU (GALAXY BOX) - KHUSUS BIAR PISAH */
+/* ================================================================= */
+
+#memory, #cpu {
+    background-color: #1e1e2e;   /* Background Gelap */
+    color: #cba6f7;              /* Teks Ungu */
+    
+    border: 2px solid #cba6f7;   /* Garis Tepi Ungu */
+    border-radius: 15px;         /* Sudut Tumpul */
+    
+    font-family: "JetBrainsMono Nerd Font", sans-serif;
+    font-weight: bold;
+    font-size: 13px;
+    
+    padding: 0 15px;             /* Isi dalam agak lega */
+    
+    /* JARAK PENTING (Biar gak nempel sama tetangganya) */
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 10px;           /* Jarak dari sebelah kirinya */
+    margin-right: 5px;           /* Jarak ke sebelah kanannya */
+    
+    transition: all 0.3s ease;
+}
+
+/* EFEK HOVER (Pas Disentuh Mouse) */
+#memory:hover, #cpu:hover {
+    background-color: #cba6f7;   /* Jadi Ungu Terang */
+    color: #1e1e2e;              /* Teks Gelap */
+    box-shadow: 0 0 10px rgba(203, 166, 247, 0.7); /* Glowing */
+}
+
+/* ================================================================= */
+/* BAGIAN TENGAH (JAM) */
+/* ================================================================= */
+
+.modules-center {
+    background: transparent;
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+
+#clock {
+    background-color: #1e1e2e;
+    color: #cba6f7;
+    font-size: 14px;
+    
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-radius: 15px;
+    border: 2px solid #cba6f7; /* Border Ungu */
+
+    transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+#clock:hover {
+    background-color: #cba6f7;
+    color: #1e1e2e;
+    box-shadow: 0 0 15px rgba(203, 166, 247, 0.7);
+}
+
+/* ================================================================= */
+/* BAGIAN KANAN (TRAY, BATERAI, WIFI) - DISATUKAN DALAM CAPSULE */
+/* ================================================================= */
+
+.modules-right {
+    background-color: #1e1e2e; /* Tetap Gelap biar icon ngumpul */
+    border: 2px solid #cba6f7; /* Border Ungu */
+    border-radius: 15px;
+    
+    padding: 2px 10px;
+    margin-top: 5px;
+    margin-right: 10px;
+    margin-bottom: 5px;
+}
+
+#tray, #battery, #pulseaudio, #network, #custom-power {
+    margin-left: 8px;
+    margin-right: 8px;
+}
+
+/* Indikator Baterai */
+#battery.charging { color: #a6e3a1; }
+#battery.critical:not(.charging) { color: #f38ba8; animation: blink 0.5s infinite alternate; }
+@keyframes blink { to { color: #000; } }
+
+#custom-power {
+    color: #f38ba8;
+    font-size: 16px;
+    margin-left: 15px;
+}
+
+/* ================================================================= */
+/* BAGIAN YANG HILANG (CAVA & NOTIFIKASI) */
+/* ================================================================= */
+
+/* ================================================================= */
+/* PULAU 3: CAVA (VISUALIZER) - KOTAK SENDIRI */
+/* ================================================================= */
+
+#custom-cava {
+    background-color: #1e1e2e;   /* Background Gelap */
+    color: #cba6f7;              /* Bar Ungu */
+    font-family: "JetBrainsMono Nerd Font";
+    font-size: 16px;
+    
+    border-radius: 15px;         /* Sudut Tumpul */
+    border: 2px solid #cba6f7;   /* Garis Tepi Ungu */
+    
+    padding-left: 15px;
+    padding-right: 15px;
+    
+    /* JARAK BIAR MISAH DARI SPOTIFY */
+    margin-left: 15px; 
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+/* ================================================================= */
+/* PULAU 4: NOTIFIKASI - KOTAK SENDIRI */
+/* ================================================================= */
+
+#custom-notification {
+    background-color: #1e1e2e;
+    color: #cba6f7;
+    font-family: "JetBrainsMono Nerd Font";
+    font-size: 18px;             /* Ikon agak besar */
+    
+    border-radius: 15px;
+    border: 2px solid #cba6f7;
+    
+    padding-left: 12px;          /* Padding dikit biar jadi kotak/lingkaran */
+    padding-right: 14px;
+    
+    /* JARAK BIAR MISAH DARI CAVA */
+    margin-left: 15px;
+    margin-right: 10px;          /* Jarak kanan aman */
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+#custom-notification:hover {
+    background-color: #cba6f7;   /* Pas disentuh jadi Ungu */
+    color: #1e1e2e;
+    box-shadow: 0 0 10px rgba(203, 166, 247, 0.7);
+}

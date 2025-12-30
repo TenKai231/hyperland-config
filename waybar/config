@@ -1,0 +1,135 @@
+{
+    "layer": "top",
+    "position": "top",
+    "mod": "dock",
+    "exclusive": true,
+    "passthrough": false,
+    "gtk-layer-shell": true,
+    "height": 0,
+    "modules-left": [
+	"custom/notification",
+        "hyprland/workspaces",
+        "cpu",
+        "memory",
+	"mpris"
+    ],
+    "modules-center": [
+        "clock",
+	"custom/cava"
+    ],
+    "modules-right": [
+        "tray",
+        "pulseaudio",
+        "battery",
+	"custom/power"
+    ],
+
+    "hyprland/window": {
+        "format": "{}"
+    },
+    "hyprland/workspaces": {
+        "disable-scroll": true,
+        "all-outputs": true,
+        "on-click": "activate",
+        "format": "{icon}",
+        "persistent_workspaces": {
+            "1": [],
+            "2": [],
+            "3": [],
+            "4": []
+        }
+    },
+    "cpu": {
+        "interval": 10,
+        "format": " {usage}%",
+        "max-length": 10
+    },
+    "memory": {
+        "interval": 30,
+        "format": " {percentage}%",
+        "max-length": 10
+    },
+    "tray": {
+        "icon-size": 13,
+        "spacing": 10
+    },
+    
+
+
+    "clock": {
+        "interval": 60,
+        "format": " {:%H:%M    %d %b}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "calendar-weeks-pos": "right",
+        "today-format": "<b><u>{}</u></b>"
+     },
+
+
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-muted": " Muted",
+        "format-icons": {
+            "default": ["", "", ""]
+        },
+        "on-click": "pavucontrol"
+    },
+	
+
+    "mpris": {
+        "format": "  {artist} - {title}",
+        "format-paused": "⏸  <i>{artist} - {title}</i>",
+        "max-length": 50,
+        "interval": 1,
+        
+        // --- INI SETTINGAN KLIK YANG ABANG MAU ---
+        "on-click": "playerctl --player=spotify previous",    // Klik Kiri = Mundur
+        "on-click-middle": "playerctl --player=spotify play-pause", // Klik Tengah = Stop/Play
+        "on-click-right": "playerctl --player=spotify next"   // Klik Kanan = Maju
+    },
+
+
+
+    "custom/power": {
+        "format": " ",   // Ikon Power
+        "tooltip": false,
+        "on-click": "wlogout" // Perintah saat diklik
+    },
+
+    "custom/cava": {
+        "exec": "~/.config/waybar/cava.sh",
+        "format": "{}",
+        "tooltip": false
+    },
+
+    "custom/notification": {
+        "tooltip": false,
+        "format": "{icon}",
+        "format-icons": {
+            "notification": "<span foreground='#f38ba8'><sup></sup></span>",
+            "none": "",
+            "dnd-notification": "<span foreground='#f38ba8'><sup></sup></span>",
+            "dnd-none": "",
+            "inhibited-notification": "<span foreground='#f38ba8'><sup></sup></span>",
+            "inhibited-none": "",
+            "dnd-inhibited-notification": "<span foreground='#f38ba8'><sup></sup></span>",
+            "dnd-inhibited-none": ""
+        },
+        "return-type": "json",
+        "exec-if": "which swaync-client",
+        "exec": "swaync-client -swb",
+        "on-click": "swaync-client -t -sw",
+        "on-click-right": "swaync-client -d -sw",
+        "escape": true
+    },
+
+    "battery": {
+        "states": {
+            "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon} {capacity}%",
+        "format-icons": ["", "", "", "", ""]
+    }
+}
+

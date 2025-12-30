@@ -1,0 +1,139 @@
+/* === WAYBAR GAYA DARK HACKER === */
+
+* {
+    font-family: "JetBrains Mono Nerd Font", "Roboto", sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+
+/* Reset CSS dasar */
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "JetBrainsMono Nerd Font", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    min-height: 0;
+}
+
+/* Bagian Window Utama Waybar */
+window#waybar {
+    background: rgba(30, 30, 46, 0.6); /* Warna gelap transparan (Base Catppuccin) */
+    color: #cdd6f4;
+}
+
+/* Ini rahasianya: Bikin module-nya ada di dalam "kapsul" */
+.modules-left, .modules-center, .modules-right {
+    background: #1e1e2e; /* Warna solid background */
+    border-radius: 15px; /* Sudut membulat */
+    margin-top: 5px;     /* Jarak dari atas layar */
+    margin-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+/* Kasih jarak antar module (kanan) biar nggak dempet */
+.modules-right > widget {
+    margin: 0 5px;
+}
+
+/* Contoh styling buat module spesifik biar berwarna */
+#clock {
+    color: #fab387; /* Peach */
+    font-weight: bold;
+}
+
+#battery {
+    color: #a6e3a1; /* Green */
+}
+
+#network {
+    color: #89b4fa; /* Blue */
+}
+
+#workspaces button {
+    padding: 0 5px;
+    background-color: transparent;
+    color: #ffffff;
+    border: none;
+}
+
+/* Workspace Aktif = Biru Neon */
+#workspaces button.active {
+    color: #00ffff;
+    border-bottom: 2px solid #00ffff;
+}
+
+#workspaces button.urgent {
+    background-color: #eb4d4b;
+}
+
+/* MODUL KANAN (Jam, Baterai, dll) */
+#clock,
+#battery,
+#cpu,
+#memory,
+#disk,
+#temperature,
+#backlight,
+#network,
+#pulseaudio,
+#wireplumber,
+#custom-media,
+#tray,
+#mode,
+#idle_inhibitor,
+#mpd {
+    padding: 0 10px;
+    background-color: transparent; /* HAPUS BACKGROUND KOTAK */
+    color: #ffffff;
+    margin: 0 4px;
+}
+
+/* Indikator Warna Khusus */
+#battery.charging, #battery.plugged {
+    color: #26A65B; /* Hijau pas ngecas */
+}
+
+#battery.critical:not(.charging) {
+    color: #f53c3c; /* Merah pas lowbat */
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes blink {
+    to {
+        color: #000000;
+    }
+}
+
+/* --- Styling Module Baru --- */
+
+#network {
+    color: #89b4fa; /* Blue */
+    margin-right: 10px;
+}
+
+#network.disconnected {
+    color: #f38ba8; /* Red kalau putus */
+}
+
+#cpu {
+    color: #fab387; /* Peach */
+    margin-right: 10px;
+}
+
+#memory {
+    color: #a6e3a1; /* Green */
+    margin-right: 10px;
+}
+
+#pulseaudio {
+    color: #cba6f7; /* Mauve/Ungu */
+    margin-right: 10px;
+}
+
+#pulseaudio.muted {
+    color: #6c7086; /* Abu-abu kalau di-mute */
+}
